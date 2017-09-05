@@ -21,6 +21,7 @@ Follow this guide to add the widget to your Qlik Sense sheet:
 * Apply bookmark
 * Remove bookmark
 * Search for bookmark
+* Get bookmark ID
 
 ![Sense Widget - Bookmark Manager](/bookmark-manager.png?raw=true "Sense Widget - Bookmark Manager")
 
