@@ -1,0 +1,9 @@
+{
+  "name": "Bookmark manager",
+  "description": "",
+  "author": "Ann-Louise Andersson",
+  "library": "bookmark-manager",
+  "meta": {},
+  "properties": {},
+  "dependencies": {}
+}
