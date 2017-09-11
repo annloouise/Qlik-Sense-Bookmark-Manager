@@ -1,130 +1,135 @@
-<style>.bookmark-manager{
-	border:2px solid #D9D9D9;
-	border-radius:7px;
-	box-sizing:border-box;
+<style>
+.bookmark-manager {
+	border: 2px solid #D9D9D9;
+	border-radius: 7px;
+	box-sizing: border-box;
 }
 
-.panel-heading{
-	display:flex;
-	justify-content:space-between;
-	background-color:#F2F2F2;
-	height:55px;
-	line-height:55px;
-	border-bottom:1px solid #D9D9D9;
+.panel-heading {
+	display: flex;
+	justify-content: space-between;
+	background-color: #F2F2F2;
+	height: 55px;
+	line-height: 55px;
+	border-bottom: 1px solid #D9D9D9;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-	
-	.header{
-		font-size:20px;
-		font-weight:bold;
-		margin-left:20px;
+
+	.header {
+		font-size: 20px;
+		font-weight: bold;
+		margin-left: 20px;
 	}
 	
-	.lui-input{
-		width:170px;
-		margin:auto 15px;
+	.lui-input {
+		width: 170px;
+		margin: auto 15px;
 	}
 }
 
-.panel-body{
-	padding:15px;
-	border-bottom:1px solid #D9D9D9;
+.panel-body {
+	padding: 15px;
+	border-bottom: 1px solid #D9D9D9;
 }
 
-.lui-icon--remove{
-  font-size:14px !important;
-  color:#d92626;
+.lui-icon--remove {
+	font-size: 14px !important;
+	color: #d92626;
 }
 
-.bookmarks{
-	min-height:200px;
-
-	table{
-		thead{
-			background-color:#F2F2F2;
-			border-bottom:1px solid #D9D9D9;
+.bookmarks {
+	min-height: 200px;
+	
+	table {
+		thead {
+			background-color: #F2F2F2;
+			border-bottom: 1px solid #D9D9D9;
+		
+			th {
+				text-align: left;
+				padding: 5px;
+			}
+		}
+		
+		tbody {
+			tr {
+				border-bottom: 1px solid #E6E6E6;
+				cursor: pointer;
 			
-			th{
-				text-align:left;
-				padding:5px;
+				&:hover {
+					 background-color: #F2F2F2;  
+				}
+			}
+			
+			td {
+				padding: 5px;
 			}
 		}
-		tbody{
-		  tr{
-			border-bottom:1px solid #E6E6E6;
-			cursor:pointer;
-			&:hover{
-				background-color:#F2F2F2;
-			}
-		  }
-		  td{
-		  	padding:5px;
-		  }
-		}
-	}
-	.delete-col{
-		text-align:center;
-		width:50px;
 	}
 	
-	.description{
-		max-width:50%;
+	.delete-col {
+		text-align: center;
+		width: 50px;
 	}
 	
-	.msg{
+	.description {
+		max-width: 50%;
+	}
+	
+	.msg {
 		text-align: center;
 		padding: 20px;
 		color: gray;
 	}
 }
-
 </style>
-<div><div class="bookmark-manager">
+<div>
+	<div class="bookmark-manager">
 
-  <div class="panel-heading">
-	<span class="header">Bookmarks</span>
-	<input class="form-control lui-input" id="search" type="text" placeholder="Search for a Bookmark" ng-model="nameFilter">
-  </div>
-  
-  <div class="panel-body">
-	  When you create a new bookmark it is added to the bottom of 
-	  the list. Click on the name to execute the bookmark (i.e. apply the filters).
-	  If you click on the <strong>red icon </strong>
-	  <span class="lui-icon lui-icon--remove"></span> 
-	  the bookmark will <strong>be deleted</strong> without additional conformation!
-  </div>
-  
-  <qw-sys-info content="bookmarks" class="bookmarks">
-	  <table>
-		<thead>
-		  <tr>
-			<th>Name</th>
-			<th>Description</th>
-			<th>ID</th>
-			<th class="delete-col">Delete</th>
-		  </tr>
-		</thead>
+		<div class="panel-heading">
+			<span class="header">Bookmarks</span>
+			<input class="form-control lui-input" id="search" type="text" placeholder="Search for a Bookmark" ng-model="nameFilter">
+		</div>
 
-		<tbody>
-		  <tr ng-repeat="bookmark in bookmarks|filter: nameFilter as filtered" ng-click="app.bookmark.apply(bookmark.qInfo.qId)">
-			<td>
-			  {{bookmark.qData.title}}
-			</td> 
-			<td class="description">
-			  {{bookmark.qData.description}}
-			</td>
-			<td>
-			  {{bookmark.qInfo.qId}}
-			</td>
-			<td class="delete-col">
-			  <span class="lui-icon lui-icon--remove" ng-click="app.bookmark.remove(bookmark.qInfo.qId)"></span>
-			</td>
-		  </tr>
-		</tbody>		
+		<div class="panel-body">
+			When you create a new bookmark it is added to the bottom of
+			the list. Click on the name to execute the bookmark (i.e. apply the filters).
+			If you click on the <strong>red icon </strong>
+			<span class="lui-icon lui-icon--remove"></span>
+			the bookmark will <strong>be deleted</strong> without additional conformation!
+		</div>
 
-	  </table>
-	  <div class="msg" ng-if="filtered.length === 0 &amp;&amp; bookmarks.length > 0">No matches for current search</div>
-	  <div class="msg" ng-if="bookmarks.length === 0">No bookmarks are available</div>
-  </qw-sys-info>
-</div>
+		<qw-sys-info content="bookmarks" class="bookmarks">
+			<table>
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>ID</th>
+					<th class="delete-col">Delete</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr ng-repeat="bookmark in bookmarks|filter: nameFilter as filtered" ng-click="app.bookmark.apply(bookmark.qInfo.qId)">
+					<td>
+						{{bookmark.qData.title}}
+					</td>
+					<td class="description">
+						{{bookmark.qData.description}}
+					</td>
+					<td>
+						{{bookmark.qInfo.qId}}
+					</td>
+					<td class="delete-col">
+						<span class="lui-icon lui-icon--remove" ng-click="app.bookmark.remove(bookmark.qInfo.qId)"></span>
+					</td>
+				</tr>
+				</tbody>
+
+			</table>
+			<div class="msg" ng-if="filtered.length === 0 &amp;&amp; bookmarks.length > 0">No matches for current search</div>
+			<div class="msg" ng-if="bookmarks.length === 0">No bookmarks are available</div>
+		</qw-sys-info>
+	</div>
 </div>
