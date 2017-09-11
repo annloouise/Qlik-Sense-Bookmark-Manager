@@ -30,3 +30,6 @@ Follow this guide to add the widget to your Qlik Sense sheet:
 **Ann-Louise Andersson**
 
 * [github.com/annloouise](http://github.com/annloouise)
+
+## License
+MIT license
