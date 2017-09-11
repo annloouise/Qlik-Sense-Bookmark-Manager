@@ -1,6 +1,6 @@
 {
   "name": "Bookmark manager",
-  "description": "",
+  "description": "A Bookmark Manager widget that makes it easier to manage your bookmarks on a Qlik Sense sheet.",
   "author": "Ann-Louise Andersson",
   "library": "bookmark-manager",
   "meta": {},
